@@ -14,6 +14,8 @@ public class Author {
     private String lastName;
     @ManyToMany(mappedBy = "authors")
     private Set<Book> books;
+    @ManyToMany(mappedBy = "authors")
+    private Set<Publisher> publishers;
 
     public Author() {
     }
@@ -22,6 +24,7 @@ public class Author {
         this.firstName = firstName;
         this.lastName = lastName;
         this.books = new HashSet<>();
+        this.publishers = new HashSet<>();
     }
 
     public Author(String firstName, String lastName, Set<Book> books) {
@@ -62,6 +65,14 @@ public class Author {
         this.books = books;
     }
 
+    public Set<Publisher> getPublishers() {
+        return publishers;
+    }
+
+    public void setPublishers(Set<Publisher> publishers) {
+        this.publishers = publishers;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -84,6 +95,7 @@ public class Author {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", books=" + books +
+                ", publishers=" + publishers +
                 '}';
     }
 }
